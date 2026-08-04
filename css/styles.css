@@ -447,6 +447,14 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   letter-spacing: -0.02em;
 }
 
+.stat-value-note {
+  font-size: 0.5em;
+  font-weight: 500;
+  color: var(--ink-soft);
+  letter-spacing: 0;
+  margin-left: 0.1em;
+}
+
 .stat-label { font-size: 0.94rem; font-weight: 600; color: var(--ink); }
 
 .stat-detail { font-size: 0.85rem; color: var(--ink-soft); line-height: 1.5; }
