@@ -716,3 +716,46 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   max-width: 62ch;
 }
 .case-body > p + .text-link { margin-top: 1rem; }
+
+/* ---------- Timeline (About page) ---------- */
+.timeline { margin-top: clamp(2rem, 4vw, 3rem); }
+
+.timeline-item { position: relative; padding-left: clamp(1.8rem, 4vw, 2.4rem); }
+.timeline-item + .timeline-item { margin-top: clamp(2.25rem, 4vw, 2.75rem); }
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.4rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 1.1rem;
+  bottom: calc(-1 * clamp(2.25rem, 4vw, 2.75rem));
+  width: 1px;
+  background: var(--line);
+}
+.timeline-item:last-child::after { display: none; }
+
+.timeline-year {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--accent);
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.4rem;
+}
+.timeline-item h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
+.timeline-item p { color: var(--ink-soft); font-size: 0.96rem; max-width: 60ch; }
+
+/* ---------- Grid modifiers ---------- */
+.approach-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 720px) { .approach-grid.cols-2 { grid-template-columns: 1fr; } }
