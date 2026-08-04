@@ -335,40 +335,111 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
 .bg-ink { background: var(--cream-soft); color: var(--ink); }
 .bg-cream { background: var(--paper); }
 
-/* ---------- Hero ---------- */
-.hero { padding-top: clamp(3rem, 7vw, 5.5rem); padding-bottom: clamp(3rem, 7vw, 5.5rem); }
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: clamp(2.5rem, 6vw, 5rem);
-  align-items: center;
-}
-
+/* ---------- Hero (shared) ---------- */
 .hero-copy h1 { font-size: clamp(2.2rem, 4.2vw, 3.4rem); margin: 0.55em 0 0.55em; }
-
 .hero-lead { font-size: 1.1rem; max-width: 46ch; color: var(--ink-soft); }
-
 .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2.1rem; }
 
-.hero-portrait-wrap { position: relative; }
-.hero-portrait-wrap::before { content: none; }
-
-.hero-portrait {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  width: 100%;
-  background-color: var(--cream-soft);
-  background-size: cover;
-  background-position: center;
-  border: 1px solid var(--line);
-  filter: none;
+/* Aligns hero text to the same left edge as .container content,
+   even though the hero grid itself runs full-bleed to the viewport edge. */
+.hero-edge-pad {
+  padding-left: max(var(--gutter), calc((100vw - var(--max)) / 2 + var(--gutter)));
+  padding-right: clamp(2rem, 5vw, 3.5rem);
 }
-.hero-portrait::after { content: none; }
 
-@media (max-width: 820px) {
-  .hero-grid { grid-template-columns: 1fr; }
-  .hero-portrait-wrap { max-width: 320px; margin: 0 auto; order: -1; }
+/* ---------- Hero — Option 1: split navy panel ---------- */
+.hero-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  min-height: clamp(480px, 60vh, 660px);
+}
+
+.hero-split-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: clamp(2.5rem, 6vw, 4rem);
+}
+
+.hero-split-media {
+  position: relative;
+  overflow: hidden;
+  background: var(--accent-dim);
+}
+
+.hero-split-media .hero-portrait {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 15%;
+  filter: grayscale(1) contrast(1.06) brightness(0.95);
+}
+
+.hero-split-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(155deg, rgba(20, 40, 69, 0.5), rgba(20, 40, 69, 0.05) 45%, rgba(15, 30, 52, 0.72));
+  mix-blend-mode: multiply;
+}
+
+.hero-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.5rem clamp(1.5rem, 4vw, 2.5rem);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: linear-gradient(0deg, rgba(8, 16, 30, 0.7), transparent);
+}
+.hero-caption::before { content: ''; width: 24px; height: 2px; background: #ffffff; opacity: 0.85; }
+
+@media (max-width: 900px) {
+  .hero-split { grid-template-columns: 1fr; min-height: 0; }
+  .hero-split-media { order: -1; aspect-ratio: 5 / 4; }
+  .hero-edge-pad { padding-left: var(--gutter); padding-right: var(--gutter); }
+}
+
+/* ---------- Hero — Option 2: edge-bleed, no frame ---------- */
+.hero-bleed {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  min-height: clamp(480px, 60vh, 660px);
+}
+
+.hero-bleed-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: clamp(2.5rem, 6vw, 4rem);
+}
+
+.hero-bleed-media {
+  position: relative;
+  overflow: hidden;
+  border-left: 2px solid var(--accent);
+}
+
+.hero-bleed-media .hero-portrait {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 12%;
+  filter: grayscale(0.4) contrast(1.04);
+}
+
+@media (max-width: 900px) {
+  .hero-bleed { grid-template-columns: 1fr; min-height: 0; }
+  .hero-bleed-media { order: -1; aspect-ratio: 5 / 4; border-left: none; border-bottom: 2px solid var(--accent); }
+  .hero-edge-pad { padding-left: var(--gutter); padding-right: var(--gutter); }
 }
 
 /* ---------- Stats ---------- */
