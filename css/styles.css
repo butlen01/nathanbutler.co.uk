@@ -451,58 +451,51 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
 
 .stat-detail { font-size: 0.85rem; color: var(--ink-soft); line-height: 1.5; }
 
-/* CV-style bar chart for the revenue-growth stat: value labels, bars, axis */
-.stat-chart { margin: 0.7rem 0 0.3rem; }
+/* CV-style bar chart for the revenue-growth stat: value labels, solid bars, year axis */
+.stat-chart { margin: 0.8rem 0 0.2rem; height: 108px; }
 
 .chart-bars {
   display: flex;
   align-items: flex-end;
-  gap: 2.5rem;
-  height: 60px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--line);
+  gap: 2.75rem;
+  height: 100%;
 }
 
 .chart-bar-col {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
   gap: 0.5rem;
-  width: 58px;
-  height: 100%;
 }
 
 .chart-value {
   font-family: var(--font-body);
-  font-size: 0.68rem;
-  font-weight: 600;
-  color: var(--ink-soft);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--ink);
   white-space: nowrap;
 }
 
 .bar {
-  width: 28px;
-  border-radius: 1px 1px 0 0;
-  background: var(--cream-soft);
-  border: 1px solid var(--line);
-  border-bottom: none;
+  width: 56px;
+  border-radius: 2px 2px 0 0;
 }
-.bar.bar-end { background: var(--accent); border-color: var(--accent); }
-.bar-low { height: 20%; }
-.bar-high { height: 100%; }
+.bar-low { height: 26px; background: color-mix(in srgb, var(--accent) 32%, #ffffff); }
+.bar-high { height: 92px; background: var(--accent); }
 
-.chart-axis {
-  display: flex;
-  gap: 2.5rem;
-  margin-top: 0.5rem;
-}
-.chart-axis span {
-  width: 58px;
-  text-align: center;
-  font-size: 0.72rem;
+.chart-axis-label {
+  font-size: 0.78rem;
+  font-weight: 500;
   color: var(--ink-soft);
 }
+
+/* Growth icon (tile 2): small house, thunderbolt arrow, larger house cluster */
+.growth-icon { height: 108px; display: flex; align-items: flex-end; }
+.growth-icon svg { width: 100%; height: 100%; max-width: 300px; }
+.house-small { fill: color-mix(in srgb, var(--accent) 32%, #ffffff); }
+.house-large { fill: var(--accent); }
+.growth-arrow { stroke: var(--accent-dim); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+.growth-arrowhead { fill: var(--accent-dim); }
 
 @media (max-width: 820px) { .stat-grid { grid-template-columns: 1fr; } }
 @media (min-width: 821px) and (max-width: 1080px) { .stat-grid { grid-template-columns: repeat(2, 1fr); } }
