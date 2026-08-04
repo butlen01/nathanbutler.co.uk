@@ -3,35 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nathan Butler | Commercial &amp; Operational Leadership</title>
+  <title>Nathan Butler | Commercial &amp; Operational Leadership — V3 Preview</title>
   <meta name="description" content="Nathan Butler — senior commercial and operational leader. Fourfold divisional growth, turnarounds, and the systems that make growth repeatable." />
+  <meta name="robots" content="noindex" />
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/styles-v3.css" />
   <style>
     .compare-badge {
       position: fixed;
       bottom: 22px;
       left: 22px;
       z-index: 200;
-      background: var(--ink);
-      color: var(--cream);
+      background: #1e3a6e;
+      color: #fff;
       font-family: 'Inter', sans-serif;
       font-size: 0.8rem;
       font-weight: 600;
       padding: 0.7em 1.1em;
       border-radius: 999px;
       box-shadow: 0 10px 30px -8px rgba(0,0,0,0.4);
+      display: flex;
+      gap: 0.6em;
     }
-    .compare-badge a { color: var(--cream); border-bottom: 1px solid rgba(255,255,255,0.5); }
+    .compare-badge a { color: #fff; border-bottom: 1px solid rgba(255,255,255,0.5); }
+    .compare-badge span { opacity: 0.55; }
   </style>
 </head>
 <body>
 
-  <div class="compare-badge">V1 — <a href="index-v2.html">V2</a> · <a href="index-v3.html">V3</a></div>
+  <div class="compare-badge">V3 preview — <a href="index.html">V1</a><span>·</span><a href="index-v2.html">V2</a></div>
 
   <header class="site-header">
     <div class="container">
-      <a class="brand" href="index.html">
+      <a class="brand" href="index-v3.html">
         <span class="brand-mark">NB</span>
         <span>
           <span class="brand-name">Nathan Butler</span>
@@ -40,7 +44,7 @@
       </a>
       <nav class="main-nav" aria-label="Primary">
         <ul>
-          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="index-v3.html" aria-current="page">Home</a></li>
           <li><a href="track-record.html">Track Record</a></li>
           <li><a href="leadership.html">Leadership</a></li>
           <li><a href="about.html">About</a></li>
@@ -91,6 +95,10 @@
         <div class="stat-grid reveal-stagger reveal">
           <div class="stat-card">
             <span class="stat-value"><span data-count-to="4">0</span>×</span>
+            <div class="stat-chart" aria-hidden="true">
+              <span class="bar bar-low"></span>
+              <span class="bar bar-high bar-end"></span>
+            </div>
             <span class="stat-label">Divisional revenue growth</span>
             <span class="stat-detail">c.£1.9m &rarr; c.£8.2m over seven years, at a sustained c.23% return on sale</span>
           </div>
@@ -230,7 +238,7 @@
         <span class="brand-mark">NB</span>
         <span>
           <span class="brand-name">Nathan Butler</span>
-          <span class="brand-role" style="color: var(--cream); opacity: 0.6;">Chester / North West UK</span>
+          <span class="brand-role" style="color: #fff; opacity: 0.6;">Chester / North West UK</span>
         </span>
       </div>
       <div class="footer-links">
