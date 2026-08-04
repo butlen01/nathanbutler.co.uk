@@ -693,3 +693,26 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   color: var(--accent);
 }
 .landmark-detail { font-size: 0.85rem; color: var(--ink-soft); }
+
+/* ---------- Model band (pull-quote statement) ---------- */
+.model-band { background: var(--accent-dim); color: #ffffff; }
+.model-band .eyebrow { color: #93a8c9; }
+.model-band .eyebrow::before { background: #93a8c9; }
+.model-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+  line-height: 1.4;
+  max-width: 42ch;
+  margin: 0.9rem 0 0;
+  letter-spacing: -0.005em;
+}
+
+/* ---------- Principles (case-row reuse, plain text body) ---------- */
+.case-body > p {
+  color: var(--ink-soft);
+  font-size: 0.97rem;
+  max-width: 62ch;
+}
+.case-body > p + .text-link { margin-top: 1rem; }
