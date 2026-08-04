@@ -7,27 +7,8 @@
   <meta name="description" content="Nathan Butler — senior commercial and operational leader. Fourfold divisional growth, turnarounds, and the systems that make growth repeatable." />
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="css/styles.css" />
-  <style>
-    .compare-badge {
-      position: fixed;
-      bottom: 22px;
-      left: 22px;
-      z-index: 200;
-      background: var(--ink);
-      color: var(--cream);
-      font-family: 'Inter', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 600;
-      padding: 0.7em 1.1em;
-      border-radius: 999px;
-      box-shadow: 0 10px 30px -8px rgba(0,0,0,0.4);
-    }
-    .compare-badge a { color: var(--cream); border-bottom: 1px solid rgba(255,255,255,0.5); }
-  </style>
 </head>
 <body>
-
-  <div class="compare-badge">V1 — <a href="index-v2.html">V2</a> · <a href="index-v3.html">V3</a></div>
 
   <header class="site-header">
     <div class="container">
@@ -55,25 +36,24 @@
 
   <main>
 
-    <!-- Hero -->
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy reveal is-visible">
-          <span class="eyebrow">Senior Commercial &amp; Operational Leader</span>
-          <h1>I turn complex commercial problems into growth that runs without me.</h1>
-          <p class="hero-lead">
-            Over a decade leading multi-division P&amp;Ls, I've grown a division more than fourfold,
-            returned a business earmarked for closure to sustained profit, and rebuilt the pay
-            models, structures and systems underneath — so growth holds without needing me in the room.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="track-record.html">View the Track Record</a>
-            <a class="btn btn-ghost" href="contact.html">Get in Touch</a>
-          </div>
+    <!-- Hero — split navy panel -->
+    <section class="hero-split">
+      <div class="hero-split-text hero-edge-pad hero-copy reveal is-visible">
+        <span class="eyebrow">Senior Commercial &amp; Operational Leader</span>
+        <h1>I turn complex commercial problems into growth that runs without me.</h1>
+        <p class="hero-lead">
+          Over a decade leading multi-division P&amp;Ls, I've grown a division more than fourfold,
+          returned a business earmarked for closure to sustained profit, and rebuilt the pay
+          models, structures and systems underneath — so growth holds without needing me in the room.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="track-record.html">View the Track Record</a>
+          <a class="btn btn-ghost" href="contact.html">Get in Touch</a>
         </div>
-        <div class="hero-portrait-wrap reveal is-visible">
-          <div class="hero-portrait" style="background-image: url('assets/img/headshot.png');" role="img" aria-label="Portrait of Nathan Butler"></div>
-        </div>
+      </div>
+      <div class="hero-split-media reveal is-visible">
+        <div class="hero-portrait" style="background-image: url('assets/img/headshot.png');" role="img" aria-label="Portrait of Nathan Butler"></div>
+        <p class="hero-caption">&ldquo;Complexity does not create value; clarity, alignment and disciplined execution do.&rdquo;</p>
       </div>
     </section>
 
@@ -91,6 +71,10 @@
         <div class="stat-grid reveal-stagger reveal">
           <div class="stat-card">
             <span class="stat-value"><span data-count-to="4">0</span>×</span>
+            <div class="stat-chart" aria-hidden="true">
+              <span class="bar bar-low"></span>
+              <span class="bar bar-high bar-end"></span>
+            </div>
             <span class="stat-label">Divisional revenue growth</span>
             <span class="stat-detail">c.£1.9m &rarr; c.£8.2m over seven years, at a sustained c.23% return on sale</span>
           </div>
@@ -230,7 +214,7 @@
         <span class="brand-mark">NB</span>
         <span>
           <span class="brand-name">Nathan Butler</span>
-          <span class="brand-role" style="color: var(--cream); opacity: 0.6;">Chester / North West UK</span>
+          <span class="brand-role" style="color: #fff; opacity: 0.6;">Chester / North West UK</span>
         </span>
       </div>
       <div class="footer-links">
