@@ -689,12 +689,13 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   margin-top: clamp(2rem, 4vw, 3rem);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
+  gap: 1rem;
 }
 .landmark-item {
-  background: var(--paper);
+  background: var(--cream-soft);
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
   padding: 1.5rem 1.6rem;
   display: flex;
   flex-direction: column;
@@ -792,7 +793,7 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
 .contact-card {
   background: var(--cream-soft);
   border: 1px solid var(--line);
-  border-radius: 3px;
+  border-radius: 10px;
   padding: clamp(2rem, 4vw, 2.75rem);
 }
 
