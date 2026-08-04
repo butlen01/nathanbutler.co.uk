@@ -390,17 +390,36 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   bottom: 0;
   z-index: 1;
   display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  padding: 1.5rem clamp(1.5rem, 4vw, 2.5rem);
-  font-size: 0.76rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  align-items: flex-start;
+  gap: 0.9rem;
+  margin: 0;
+  padding: 1.8rem clamp(1.5rem, 4vw, 2.5rem) 2rem;
+  padding-right: clamp(2.5rem, 8vw, 5rem);
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: -0.005em;
+  line-height: 1.4;
   color: #ffffff;
-  background: linear-gradient(0deg, rgba(8, 16, 30, 0.7), transparent);
+  background: linear-gradient(0deg, rgba(8, 16, 30, 0.82) 20%, transparent);
 }
-.hero-caption::before { content: ''; width: 24px; height: 2px; background: #ffffff; opacity: 0.85; }
+.hero-caption::before {
+  content: '';
+  flex: none;
+  width: 24px;
+  height: 2px;
+  margin-top: 0.65em;
+  background: #ffffff;
+  opacity: 0.85;
+}
+
+@media (max-width: 900px) {
+  .hero-caption {
+    font-size: 0.92rem;
+    padding: 1.2rem var(--gutter) 1.4rem;
+  }
+}
 
 @media (max-width: 900px) {
   .hero-split { grid-template-columns: 1fr; min-height: 0; }
