@@ -428,8 +428,6 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
 }
 
 /* ---------- Stats ---------- */
-.stats-note { font-size: 0.87rem; color: var(--ink-soft); max-width: 26ch; margin: 0; }
-
 .stat-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -439,7 +437,7 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   margin-top: 2.5rem;
 }
 
-.stat-card { background: var(--paper); padding: 2.1rem 1.7rem; display: flex; flex-direction: column; gap: 0.45rem; }
+.stat-card { background: var(--paper); padding: 2.1rem 1.7rem; display: flex; flex-direction: column; gap: 0.45rem; justify-content: space-between; }
 
 .stat-value {
   font-family: var(--font-display);
@@ -449,31 +447,70 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   letter-spacing: -0.02em;
 }
 
+.stat-value-note {
+  font-size: 0.5em;
+  font-weight: 500;
+  color: var(--ink-soft);
+  letter-spacing: 0;
+  margin-left: 0.1em;
+}
+
 .stat-label { font-size: 0.94rem; font-weight: 600; color: var(--ink); }
 
 .stat-detail { font-size: 0.85rem; color: var(--ink-soft); line-height: 1.5; }
 
-/* CV-style mini bar chart for the revenue-growth stat */
-.stat-chart {
+/* CV-style bar chart for the revenue-growth stat: value labels, bars, axis */
+.stat-chart { margin: 0.7rem 0 0.3rem; }
+
+.chart-bars {
   display: flex;
   align-items: flex-end;
-  gap: 0.6rem;
-  height: 44px;
-  margin: 0.2rem 0 0.1rem;
+  gap: 2.5rem;
+  height: 60px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
 }
-.stat-chart .bar {
-  width: 20px;
+
+.chart-bar-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  width: 58px;
+  height: 100%;
+}
+
+.chart-value {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.bar {
+  width: 28px;
   border-radius: 1px 1px 0 0;
   background: var(--cream-soft);
   border: 1px solid var(--line);
-  position: relative;
+  border-bottom: none;
 }
-.stat-chart .bar.bar-end {
-  background: var(--accent);
-  border-color: var(--accent);
+.bar.bar-end { background: var(--accent); border-color: var(--accent); }
+.bar-low { height: 20%; }
+.bar-high { height: 100%; }
+
+.chart-axis {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 0.5rem;
 }
-.stat-chart .bar-low { height: 22%; }
-.stat-chart .bar-high { height: 100%; }
+.chart-axis span {
+  width: 58px;
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+}
 
 @media (max-width: 820px) { .stat-grid { grid-template-columns: 1fr; } }
 @media (min-width: 821px) and (max-width: 1080px) { .stat-grid { grid-template-columns: repeat(2, 1fr); } }
