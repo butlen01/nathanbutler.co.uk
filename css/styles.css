@@ -693,6 +693,75 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   .case-list-2col { grid-template-columns: 1fr; gap: 0; }
 }
 
+/* Three-column image-card variant (Client Case Studies): same
+   case-row content as the other variants, but each one becomes a
+   self-contained bordered, rounded card with a project image on top
+   and the meta/body content below. */
+.case-list-img-grid {
+  border-top: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.case-list-img-grid .case-row {
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 0;
+}
+.case-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background-color: var(--cream-soft);
+  background-size: cover;
+  background-position: center;
+}
+.case-image-label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: linear-gradient(0deg, rgba(20, 40, 69, 0.68), transparent);
+}
+.case-list-img-grid .case-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 1.6rem 1.5rem 1.8rem;
+}
+.case-list-img-grid .case-meta {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.7rem 1rem;
+}
+.case-list-img-grid .case-figure {
+  border-top: none;
+  padding-top: 0;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+.case-list-img-grid .case-body h3 { font-size: 1.12rem; max-width: none; }
+.case-list-img-grid .case-block p { font-size: 0.93rem; }
+
+@media (max-width: 1080px) {
+  .case-list-img-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .case-list-img-grid { grid-template-columns: 1fr; }
+}
+
 /* ---------- Note panel ---------- */
 .note-panel {
   margin-top: clamp(1.5rem, 3vw, 2.5rem);
