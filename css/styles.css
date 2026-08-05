@@ -770,7 +770,6 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 1rem;
 }
 .story-chart-bar-col { justify-content: flex-end; gap: 0.5rem; }
 .story-chart-bar-col.is-first { grid-column: 1; }
@@ -779,8 +778,8 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
 .story-chart-bar { width: clamp(64px, 12vw, 96px); border-radius: 4px 4px 0 0; }
 .story-chart-bar-value { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; color: var(--ink); white-space: nowrap; }
 /* One continuous line spanning all columns, pinned to row 1's bottom edge —
-   per-cell borders left visible gaps at the column-gap spacing instead of
-   a single unbroken axis. */
+   flush against the bars themselves (no padding on the columns above), so
+   the bars visibly sit ON the baseline rather than floating above it. */
 .story-chart-axis {
   grid-row: 1;
   grid-column: 1 / -1;
@@ -791,7 +790,7 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
 .story-chart-bar-year {
   grid-row: 2;
   text-align: center;
-  padding-top: 0.6rem;
+  padding-top: 1rem;
   font-size: 0.85rem;
   color: var(--ink-soft);
 }
