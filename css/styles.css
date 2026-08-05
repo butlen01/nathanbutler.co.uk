@@ -759,6 +759,7 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
    the border on the outer container put the line under the years instead —
    grid columns keep bar/year pairs aligned regardless of their own width. */
 .story-chart-plot {
+  --chart-bar-w: clamp(64px, 12vw, 96px);
   display: grid;
   grid-template-columns: auto auto auto;
   justify-content: center;
@@ -770,22 +771,27 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 0.5rem;
 }
 .story-chart-bar-col { justify-content: flex-end; gap: 0.5rem; }
 .story-chart-bar-col.is-first { grid-column: 1; }
 .story-chart-bar-col.is-second { grid-column: 3; }
 .story-chart-multiplier-cell { grid-column: 2; justify-content: center; }
-.story-chart-bar { width: clamp(64px, 12vw, 96px); border-radius: 4px 4px 0 0; }
+.story-chart-bar { width: var(--chart-bar-w); border-radius: 4px 4px 0 0; }
 .story-chart-bar-value { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; color: var(--ink); white-space: nowrap; }
-/* One continuous line spanning all columns, pinned to row 1's bottom edge —
-   flush against the bars themselves (no padding on the columns above), so
-   the bars visibly sit ON the baseline rather than floating above it. */
+/* One continuous line spanning all columns, pinned to row 1's bottom edge,
+   with a small gap above it (padding-bottom on the columns) so the bars
+   don't sit flush on the baseline. Extended half a bar's width past the
+   outer bars on each side via negative margin, so it doesn't end flush
+   with them either. */
 .story-chart-axis {
   grid-row: 1;
   grid-column: 1 / -1;
   align-self: end;
   height: 1px;
   background: var(--chart-baseline);
+  margin-left: calc(var(--chart-bar-w) / -2);
+  margin-right: calc(var(--chart-bar-w) / -2);
 }
 .story-chart-bar-year {
   grid-row: 2;
