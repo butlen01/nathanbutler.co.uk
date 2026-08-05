@@ -736,6 +736,49 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
 .story-body ul li + li { margin-top: 0.5rem; }
 .story-back { display: block; margin-top: 2.5rem; }
 
+/* ---------- Story chart (governed data-viz: --data-tint / --chart-baseline) ---------- */
+.story-chart-section {
+  padding: clamp(2.5rem, 6vw, 4rem) 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.story-chart { max-width: 68ch; margin: 0 auto; }
+.story-chart-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+.story-chart-desc { color: var(--ink-soft); font-size: 1.02rem; max-width: 46ch; margin-bottom: clamp(2rem, 5vw, 3rem); }
+.story-chart-plot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: clamp(1.5rem, 6vw, 3.5rem);
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--chart-baseline);
+}
+.story-chart-bar-col { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+.story-chart-bar { width: clamp(64px, 12vw, 96px); border-radius: 4px 4px 0 0; }
+.story-chart-bar-value { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; color: var(--ink); white-space: nowrap; }
+.story-chart-bar-year { font-size: 0.85rem; color: var(--ink-soft); }
+.story-chart-multiplier {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.4rem, 7vw, 3.4rem);
+  color: var(--accent);
+  align-self: center;
+  padding: 0 0.25rem;
+  letter-spacing: -0.02em;
+}
+@media (max-width: 480px) {
+  .story-chart-plot { gap: 1.25rem; }
+  .story-chart-multiplier { font-size: 2rem; }
+}
+
 @media (max-width: 720px) {
   .case-row { grid-template-columns: 1fr; gap: 1.25rem; }
   .case-meta { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 0.8rem 1.2rem; }
