@@ -660,6 +660,39 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   .case-figure { border-top: none; padding-top: 0; flex-direction: row; align-items: baseline; gap: 0.5rem; }
 }
 
+/* Two-column variant: same case-row content, reflowed into a narrower
+   card — meta becomes a horizontal row (index/pill/figure inline)
+   instead of a fixed 200px side column, since there isn't room for
+   both side-by-side at half page width. */
+.case-list-2col {
+  border-top: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 3rem;
+}
+.case-list-2col .case-row {
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 1.75rem 0;
+  border-top: 1px solid var(--line);
+}
+.case-list-2col .case-meta {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem 1.2rem;
+}
+.case-list-2col .case-figure {
+  border-top: none;
+  padding-top: 0;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+@media (max-width: 900px) {
+  .case-list-2col { grid-template-columns: 1fr; gap: 0; }
+}
+
 /* ---------- Note panel ---------- */
 .note-panel {
   margin-top: clamp(1.5rem, 3vw, 2.5rem);
