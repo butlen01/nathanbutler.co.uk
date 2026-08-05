@@ -60,6 +60,44 @@ body {
 
 img { max-width: 100%; display: block; }
 
+/* ---------- Client banner (wordmark strip) ---------- */
+.client-banner {
+  padding: 2.4rem 0;
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+.client-banner-label {
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 1.6rem;
+}
+.client-banner-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.4rem 3rem;
+}
+.client-name {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--ink-soft);
+  opacity: 0.7;
+  white-space: nowrap;
+  transition: opacity 0.25s var(--ease), color 0.25s var(--ease);
+}
+.client-name:hover { opacity: 1; color: var(--accent); }
+@media (max-width: 640px) {
+  .client-banner-row { gap: 1rem 1.8rem; }
+  .client-name { font-size: 0.88rem; }
+}
+
 h1, h2, h3, h4 {
   font-family: var(--font-display);
   font-weight: 600;
