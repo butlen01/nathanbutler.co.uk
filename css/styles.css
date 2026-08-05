@@ -753,29 +753,60 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   margin-bottom: 0.5rem;
 }
 .story-chart-desc { color: var(--ink-soft); font-size: 1.02rem; max-width: 46ch; margin-bottom: clamp(2rem, 5vw, 3rem); }
+
+/* Grid, not flex: the axis line must sit at the true bar baseline (row 1's
+   bottom edge), with year labels in row 2 below it. A single flex row with
+   the border on the outer container put the line under the years instead —
+   grid columns keep bar/year pairs aligned regardless of their own width. */
 .story-chart-plot {
-  display: flex;
-  align-items: flex-end;
+  display: grid;
+  grid-template-columns: auto auto auto;
   justify-content: center;
-  gap: clamp(1.5rem, 6vw, 3.5rem);
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--chart-baseline);
+  column-gap: clamp(1.5rem, 6vw, 3.5rem);
 }
-.story-chart-bar-col { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+.story-chart-bar-col,
+.story-chart-multiplier-cell {
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1rem;
+}
+.story-chart-bar-col { justify-content: flex-end; gap: 0.5rem; }
+.story-chart-bar-col.is-first { grid-column: 1; }
+.story-chart-bar-col.is-second { grid-column: 3; }
+.story-chart-multiplier-cell { grid-column: 2; justify-content: center; }
 .story-chart-bar { width: clamp(64px, 12vw, 96px); border-radius: 4px 4px 0 0; }
 .story-chart-bar-value { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; color: var(--ink); white-space: nowrap; }
-.story-chart-bar-year { font-size: 0.85rem; color: var(--ink-soft); }
+/* One continuous line spanning all columns, pinned to row 1's bottom edge —
+   per-cell borders left visible gaps at the column-gap spacing instead of
+   a single unbroken axis. */
+.story-chart-axis {
+  grid-row: 1;
+  grid-column: 1 / -1;
+  align-self: end;
+  height: 1px;
+  background: var(--chart-baseline);
+}
+.story-chart-bar-year {
+  grid-row: 2;
+  text-align: center;
+  padding-top: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+.story-chart-bar-year.is-first { grid-column: 1; }
+.story-chart-bar-year.is-second { grid-column: 3; }
 .story-chart-multiplier {
   font-family: var(--font-display);
   font-weight: 600;
   font-size: clamp(2.4rem, 7vw, 3.4rem);
   color: var(--accent);
-  align-self: center;
   padding: 0 0.25rem;
   letter-spacing: -0.02em;
 }
 @media (max-width: 480px) {
-  .story-chart-plot { gap: 1.25rem; }
+  .story-chart-plot { column-gap: 1.25rem; }
   .story-chart-multiplier { font-size: 2rem; }
 }
 
