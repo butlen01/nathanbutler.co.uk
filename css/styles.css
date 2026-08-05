@@ -15,7 +15,9 @@
   --paper: #ffffff;
   --accent: #1e3a6e;
   --accent-dim: #142845;
-  --accent-2: #6f88ad;
+  --accent-2: #8ca0c0;
+  --data-tint: #9db0d4;
+  --chart-baseline: #c9d4e8;
   --line: rgba(30, 58, 110, 0.15);
   --line-on-ink: rgba(255, 255, 255, 0.16);
 
@@ -281,7 +283,7 @@ section { padding: var(--section-pad) 0; }
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #93a8c9;
+  color: var(--accent-2);
   margin-bottom: 0.9rem;
 }
 
@@ -832,8 +834,8 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
 
 /* ---------- Model band (pull-quote statement) ---------- */
 .model-band { background: var(--accent-dim); color: #ffffff; }
-.model-band .eyebrow { color: #93a8c9; }
-.model-band .eyebrow::before { background: #93a8c9; }
+.model-band .eyebrow { color: var(--accent-2); }
+.model-band .eyebrow::before { background: var(--accent-2); }
 .model-quote {
   font-family: var(--font-display);
   font-style: italic;
