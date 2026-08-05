@@ -745,24 +745,40 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
 .case-list-img-grid .case-meta {
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.7rem 1rem;
+  min-height: 3.6rem;
 }
 .case-list-img-grid .case-figure {
   border-top: none;
   padding-top: 0;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: baseline;
-  gap: 0.4rem;
+  gap: 0.3rem 0.5rem;
 }
-.case-list-img-grid .case-body h3 { font-size: 1.12rem; max-width: none; }
+.case-list-img-grid .case-figure-value { font-size: 1.25rem; }
+.case-list-img-grid .case-body h3 { font-size: 1.12rem; max-width: none; min-height: 2.7rem; }
 .case-list-img-grid .case-block p { font-size: 0.93rem; }
+/* Context and Approach get a floor height so the next subheading
+   (Approach / Result) starts at a consistent point across a row;
+   Result is left free since nothing needs to align below it. */
+.case-list-img-grid .case-block:nth-child(2) p { min-height: 9rem; }
+.case-list-img-grid .case-block:nth-child(3) p { min-height: 10.5rem; }
 
 @media (max-width: 1080px) {
   .case-list-img-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 640px) {
   .case-list-img-grid { grid-template-columns: 1fr; }
+  /* Single column: nothing to align across a row, so drop the floor
+     heights and let each card sit as tight as its own content. */
+  .case-list-img-grid .case-meta,
+  .case-list-img-grid .case-body h3,
+  .case-list-img-grid .case-block:nth-child(2) p,
+  .case-list-img-grid .case-block:nth-child(3) p {
+    min-height: 0;
+  }
 }
 
 /* ---------- Note panel ---------- */
