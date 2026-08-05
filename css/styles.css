@@ -712,7 +712,8 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   overflow: hidden;
   padding: 0;
 }
-.case-image {
+.case-list-img-grid .case-image {
+  order: 2;
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 10;
@@ -734,6 +735,8 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   background: linear-gradient(0deg, rgba(20, 40, 69, 0.68), transparent);
 }
 .case-list-img-grid .case-content {
+  order: 1;
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
