@@ -656,6 +656,12 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
 }
 .case-block p { color: var(--ink-soft); font-size: 0.97rem; max-width: 62ch; }
 
+/* Cross-page pointers at the foot of a case (e.g. Track Record <-> Leadership) —
+   .text-link is inline-flex, so stack them explicitly rather than relying on
+   block-level flow. */
+.case-links { display: flex; flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+.case-block + .case-links { margin-top: 1.1rem; }
+
 @media (max-width: 720px) {
   .case-row { grid-template-columns: 1fr; gap: 1.25rem; }
   .case-meta { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 0.8rem 1.2rem; }
