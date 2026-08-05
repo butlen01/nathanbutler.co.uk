@@ -730,6 +730,7 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   margin: 2.5rem 0 1rem;
 }
 .story-body h2:first-child { margin-top: 0; }
+.story-body h3 { font-size: 1.05rem; margin: 1.7rem 0 0.6rem; color: var(--ink); }
 .story-body p { color: var(--ink-soft); font-size: 1.02rem; margin-bottom: 1.1rem; }
 .story-body ul { margin: 0 0 1.1rem; padding-left: 1.2rem; color: var(--ink-soft); font-size: 1.02rem; }
 .story-body ul li + li { margin-top: 0.5rem; }
@@ -889,6 +890,7 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
 /* ---------- Landmark strip ---------- */
 .landmark-strip {
   margin-top: clamp(2rem, 4vw, 3rem);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
   gap: 1rem;
