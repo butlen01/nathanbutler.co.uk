@@ -603,6 +603,41 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
 
 @media (max-width: 900px) { .work-grid { grid-template-columns: 1fr; } }
 
+/* ---------- Work carousel ---------- */
+.carousel { display: flex; align-items: center; gap: 1rem; }
+.carousel-viewport { flex: 1; overflow: hidden; }
+.carousel-track { display: flex; gap: clamp(1rem, 2vw, 1.5rem); transition: transform 0.5s var(--ease); }
+.carousel-track .work-card { flex: 0 0 calc((100% - 2 * clamp(1rem, 2vw, 1.5rem)) / 3); border: 1px solid var(--line); }
+.carousel-track .work-card:hover { border-color: var(--accent); }
+
+.work-card-soon { border-style: dashed !important; opacity: 0.6; pointer-events: none; }
+.work-card-soon::before { display: none; }
+
+.carousel-arrow {
+  flex: 0 0 auto;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease), opacity 0.25s var(--ease);
+}
+.carousel-arrow:hover:not(:disabled) { background: var(--accent); color: #fff; border-color: var(--accent); }
+.carousel-arrow:disabled { opacity: 0.3; cursor: default; }
+
+@media (max-width: 900px) {
+  .carousel-track .work-card { flex-basis: calc((100% - clamp(1rem, 2vw, 1.5rem)) / 2); }
+}
+@media (max-width: 600px) {
+  .carousel { gap: 0.6rem; }
+  .carousel-track .work-card { flex-basis: 100%; }
+  .carousel-arrow { width: 2.2rem; height: 2.2rem; font-size: 0.95rem; }
+}
+
 /* ---------- CTA band ---------- */
 .cta { background: var(--accent-dim); color: #ffffff; text-align: center; }
 .cta .hero-lead, .cta p { color: rgba(255,255,255,0.72); }

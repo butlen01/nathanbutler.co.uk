@@ -41,6 +41,45 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  document.querySelectorAll('[data-carousel]').forEach((carousel) => {
+    const track = carousel.querySelector('[data-track]');
+    const prevBtn = carousel.querySelector('.carousel-prev');
+    const nextBtn = carousel.querySelector('.carousel-next');
+    const cards = track ? Array.from(track.children) : [];
+    if (!track || !prevBtn || !nextBtn || cards.length < 2) return;
+
+    let index = 0;
+
+    const step = () => cards[1].offsetLeft - cards[0].offsetLeft;
+
+    const visibleCount = () => {
+      const viewportWidth = track.parentElement.clientWidth;
+      const s = step();
+      return s ? Math.max(1, Math.round(viewportWidth / s)) : 1;
+    };
+
+    const update = () => {
+      const max = Math.max(0, cards.length - visibleCount());
+      index = Math.min(index, max);
+      track.style.transform = `translateX(-${index * step()}px)`;
+      prevBtn.disabled = index <= 0;
+      nextBtn.disabled = index >= max;
+    };
+
+    prevBtn.addEventListener('click', () => {
+      index = Math.max(0, index - 1);
+      update();
+    });
+    nextBtn.addEventListener('click', () => {
+      const max = Math.max(0, cards.length - visibleCount());
+      index = Math.min(max, index + 1);
+      update();
+    });
+
+    window.addEventListener('resize', update);
+    update();
+  });
+
   const counters = document.querySelectorAll('[data-count-to]');
   if (counters.length) {
     const animateCount = (el) => {
