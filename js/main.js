@@ -62,8 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const max = Math.max(0, cards.length - visibleCount());
       index = Math.min(index, max);
       track.style.transform = `translateX(-${index * step()}px)`;
-      prevBtn.disabled = index <= 0;
-      nextBtn.disabled = index >= max;
       // Only the true first/last card has no hidden neighbour to pop over,
       // so only those edges get the wide hover-scale bleed — everywhere
       // else the bleed stays inside the gap so it never peeks at the next slide.
@@ -72,12 +70,13 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     prevBtn.addEventListener('click', () => {
-      index = Math.max(0, index - 1);
+      const max = Math.max(0, cards.length - visibleCount());
+      index = index <= 0 ? max : index - 1;
       update();
     });
     nextBtn.addEventListener('click', () => {
       const max = Math.max(0, cards.length - visibleCount());
-      index = Math.min(max, index + 1);
+      index = index >= max ? 0 : index + 1;
       update();
     });
 
