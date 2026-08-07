@@ -613,8 +613,13 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
    bleed has to stay inside the inter-card gap or it starts revealing a
    sliver of the next hidden slide at rest — so only the true first/last
    card (via .at-start/.at-end, toggled in JS) gets the wide bleed it
-   needs, since that's the one edge with no hidden neighbour to leak. */
-.carousel-viewport { clip-path: inset(-2.5rem -0.85rem -2.5rem -0.85rem); }
+   needs, since that's the one edge with no hidden neighbour to leak.
+   Because clip-path only clips paint, the track's true (much wider) layout
+   size would otherwise leak into the page's scrollable width and leave a
+   large blank strip past the right edge — contain:layout stops a
+   descendant's layout size from affecting anything outside this box,
+   without touching what's painted, so it doesn't fight the clip-path bleed. */
+.carousel-viewport { contain: layout; clip-path: inset(-2.5rem -0.85rem -2.5rem -0.85rem); }
 .carousel.at-start .carousel-viewport { clip-path: inset(-2.5rem -0.85rem -2.5rem -2.5rem); }
 .carousel.at-end .carousel-viewport { clip-path: inset(-2.5rem -2.5rem -2.5rem -0.85rem); }
 .carousel-track { display: flex; align-items: stretch; gap: clamp(1rem, 2vw, 1.5rem); transition: transform 0.5s var(--ease); }
