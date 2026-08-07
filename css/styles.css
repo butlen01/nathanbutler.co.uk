@@ -606,12 +606,7 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
 /* ---------- Work carousel ---------- */
 .carousel { display: flex; align-items: center; gap: 1rem; }
 .carousel-viewport { flex: 1; overflow: hidden; }
-.carousel-track { display: flex; gap: clamp(1rem, 2vw, 1.5rem); transition: transform 0.5s var(--ease); }
-.carousel-track .work-card { flex: 0 0 calc((100% - 2 * clamp(1rem, 2vw, 1.5rem)) / 3); border: 1px solid var(--line); }
-.carousel-track .work-card:hover { border-color: var(--accent); }
-
-.work-card-soon { border-style: dashed !important; opacity: 0.6; pointer-events: none; }
-.work-card-soon::before { display: none; }
+.carousel-track { display: flex; align-items: stretch; gap: clamp(1rem, 2vw, 1.5rem); transition: transform 0.5s var(--ease); }
 
 .carousel-arrow {
   flex: 0 0 auto;
@@ -629,12 +624,68 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
 .carousel-arrow:hover:not(:disabled) { background: var(--accent); color: #fff; border-color: var(--accent); }
 .carousel-arrow:disabled { opacity: 0.3; cursor: default; }
 
+/* Homepage carousel tiles reuse the exact .case-row markup/copy from
+   Track Record & Leadership and Client Case Studies (no condensing) —
+   these rules give that markup the image-card treatment inside the
+   flex track, mirroring .case-list-img-grid on client-case-studies.html. */
+.carousel-track .case-row {
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 0;
+  flex: 0 0 calc((100% - 2 * clamp(1rem, 2vw, 1.5rem)) / 3);
+}
+.carousel-track .case-image {
+  order: 2;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background-color: var(--cream-soft);
+  background-size: cover;
+  background-position: center;
+}
+.carousel-track .case-content {
+  order: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 1.6rem 1.5rem 1.8rem;
+}
+.carousel-track .case-meta {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.7rem 1rem;
+}
+.carousel-track .case-figure {
+  border-top: none;
+  padding-top: 0;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem 0.5rem;
+}
+.carousel-track .case-figure-value { font-size: 1.2rem; }
+.carousel-track .case-body h3 { font-size: 1.08rem; max-width: none; margin-bottom: 1rem; }
+.carousel-track .case-block p,
+.carousel-track .case-block ul { font-size: 0.9rem; }
+.carousel-track .case-row:not(.case-row-noimg) .case-block:nth-child(2) p { min-height: 9rem; }
+.carousel-track .case-row:not(.case-row-noimg) .case-block:nth-child(3) p { min-height: 10.5rem; }
+
+.case-row-soon { border-style: dashed; opacity: 0.6; pointer-events: none; }
+
 @media (max-width: 900px) {
-  .carousel-track .work-card { flex-basis: calc((100% - clamp(1rem, 2vw, 1.5rem)) / 2); }
+  .carousel-track .case-row { flex-basis: calc((100% - clamp(1rem, 2vw, 1.5rem)) / 2); }
 }
 @media (max-width: 600px) {
   .carousel { gap: 0.6rem; }
-  .carousel-track .work-card { flex-basis: 100%; }
+  .carousel-track .case-row { flex-basis: 100%; }
+  .carousel-track .case-block:nth-child(2) p,
+  .carousel-track .case-block:nth-child(3) p { min-height: 0; }
   .carousel-arrow { width: 2.2rem; height: 2.2rem; font-size: 0.95rem; }
 }
 
