@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const step = () => cards[1].offsetLeft - cards[0].offsetLeft;
 
     const visibleCount = () => {
-      const viewportWidth = track.parentElement.clientWidth;
+      const viewportWidth = track.clientWidth;
       const s = step();
       return s ? Math.max(1, Math.round(viewportWidth / s)) : 1;
     };
@@ -64,6 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
       track.style.transform = `translateX(-${index * step()}px)`;
       prevBtn.disabled = index <= 0;
       nextBtn.disabled = index >= max;
+      // Only the true first/last card has no hidden neighbour to pop over,
+      // so only those edges get the wide hover-scale bleed — everywhere
+      // else the bleed stays inside the gap so it never peeks at the next slide.
+      carousel.classList.toggle('at-start', index <= 0);
+      carousel.classList.toggle('at-end', index >= max);
     };
 
     prevBtn.addEventListener('click', () => {

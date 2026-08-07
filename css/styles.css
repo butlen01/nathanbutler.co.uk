@@ -604,25 +604,62 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
 @media (max-width: 900px) { .work-grid { grid-template-columns: 1fr; } }
 
 /* ---------- Work carousel ---------- */
-.carousel { display: flex; align-items: center; gap: 1rem; }
-.carousel-viewport { flex: 1; overflow: hidden; }
+.carousel { position: relative; }
+/* clip-path (not overflow+padding) draws the clip boundary, because it's
+   pure paint — it doesn't touch the box model, so it can't perturb the
+   track's measured width and throw off the slide-position math the way
+   padding did. Negative inset() values push that boundary outward, giving
+   a hovered tile room to scale up without being cut off. The horizontal
+   bleed has to stay inside the inter-card gap or it starts revealing a
+   sliver of the next hidden slide at rest — so only the true first/last
+   card (via .at-start/.at-end, toggled in JS) gets the wide bleed it
+   needs, since that's the one edge with no hidden neighbour to leak. */
+.carousel-viewport { clip-path: inset(-2.5rem -0.85rem -2.5rem -0.85rem); }
+.carousel.at-start .carousel-viewport { clip-path: inset(-2.5rem -0.85rem -2.5rem -2.5rem); }
+.carousel.at-end .carousel-viewport { clip-path: inset(-2.5rem -2.5rem -2.5rem -0.85rem); }
 .carousel-track { display: flex; align-items: stretch; gap: clamp(1rem, 2vw, 1.5rem); transition: transform 0.5s var(--ease); }
 
 .carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
   flex: 0 0 auto;
-  width: 2.6rem;
-  height: 2.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.1rem;
+  height: 3.1rem;
   border-radius: 50%;
-  border: 1px solid var(--line);
-  background: var(--paper);
-  color: var(--accent);
-  font-size: 1.05rem;
-  line-height: 1;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fff;
   cursor: pointer;
-  transition: background 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease), opacity 0.25s var(--ease);
+  box-shadow: 0 10px 24px -8px rgba(30, 58, 110, 0.45);
+  transition: background 0.25s var(--ease), border-color 0.25s var(--ease), box-shadow 0.25s var(--ease), transform 0.25s var(--ease), opacity 0.25s var(--ease);
 }
-.carousel-arrow:hover:not(:disabled) { background: var(--accent); color: #fff; border-color: var(--accent); }
-.carousel-arrow:disabled { opacity: 0.3; cursor: default; }
+.carousel-arrow svg { width: 1.15rem; height: 1.15rem; }
+.carousel-prev { left: -1.55rem; }
+.carousel-next { right: -1.55rem; }
+.carousel-arrow:hover:not(:disabled) { background: var(--accent-dim); border-color: var(--accent-dim); transform: translateY(-50%) scale(1.08); }
+.carousel-arrow:disabled { opacity: 0.3; cursor: default; box-shadow: none; }
+
+@media (max-width: 900px) {
+  .carousel-viewport { clip-path: inset(-1.75rem -0.85rem -1.75rem -0.85rem); }
+  .carousel.at-start .carousel-viewport { clip-path: inset(-1.75rem -0.85rem -1.75rem -1.75rem); }
+  .carousel.at-end .carousel-viewport { clip-path: inset(-1.75rem -1.75rem -1.75rem -0.85rem); }
+  .carousel-prev { left: -1.1rem; }
+  .carousel-next { right: -1.1rem; }
+}
+@media (max-width: 600px) {
+  .carousel-viewport { clip-path: inset(-1rem -0.6rem -1rem -0.6rem); }
+  .carousel.at-start .carousel-viewport { clip-path: inset(-1rem -0.6rem -1rem -1rem); }
+  .carousel.at-end .carousel-viewport { clip-path: inset(-1rem -1rem -1rem -0.6rem); }
+  .carousel-arrow { width: 2.6rem; height: 2.6rem; }
+  .carousel-arrow svg { width: 1rem; height: 1rem; }
+  .carousel-prev { left: -0.3rem; }
+  .carousel-next { right: -0.3rem; }
+}
 
 /* Homepage carousel tiles reuse the exact .case-row markup/copy from
    Track Record & Leadership and Client Case Studies (no condensing) —
@@ -631,12 +668,19 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
 .carousel-track .case-row {
   display: flex;
   flex-direction: column;
+  position: relative;
   background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 10px;
   overflow: hidden;
   padding: 0;
   flex: 0 0 calc((100% - 2 * clamp(1rem, 2vw, 1.5rem)) / 3);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+.carousel-track .case-row:hover {
+  transform: scale(1.25);
+  z-index: 5;
+  box-shadow: 0 26px 50px -14px rgba(30, 58, 110, 0.4);
 }
 .carousel-track .case-image {
   order: 2;
@@ -682,11 +726,9 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   .carousel-track .case-row { flex-basis: calc((100% - clamp(1rem, 2vw, 1.5rem)) / 2); }
 }
 @media (max-width: 600px) {
-  .carousel { gap: 0.6rem; }
   .carousel-track .case-row { flex-basis: 100%; }
   .carousel-track .case-block:nth-child(2) p,
   .carousel-track .case-block:nth-child(3) p { min-height: 0; }
-  .carousel-arrow { width: 2.2rem; height: 2.2rem; font-size: 0.95rem; }
 }
 
 /* ---------- CTA band ---------- */
