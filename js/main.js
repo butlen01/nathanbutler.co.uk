@@ -84,8 +84,13 @@ document.addEventListener('DOMContentLoaded', () => {
     update();
   });
 
+  // The real final value is already static text in the HTML (data-count-to
+  // matches it), so a script-blocked browser, a print/PDF render or an ATS
+  // parser sees the correct number with zero JS required. Only when motion
+  // is actually going to run do we blank it back to 0 and count it up.
   const counters = document.querySelectorAll('[data-count-to]');
-  if (counters.length) {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (counters.length && !prefersReducedMotion && 'IntersectionObserver' in window) {
     const animateCount = (el) => {
       const target = parseFloat(el.dataset.countTo);
       const decimals = el.dataset.countTo.includes('.') ? 1 : 0;
@@ -101,19 +106,18 @@ document.addEventListener('DOMContentLoaded', () => {
       };
       requestAnimationFrame(step);
     };
-    if ('IntersectionObserver' in window) {
-      const cio = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              animateCount(entry.target);
-              cio.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.6 }
-      );
-      counters.forEach((el) => cio.observe(el));
-    }
+    const cio = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.textContent = '0';
+            animateCount(entry.target);
+            cio.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.6 }
+    );
+    counters.forEach((el) => cio.observe(el));
   }
 });
