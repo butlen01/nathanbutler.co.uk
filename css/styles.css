@@ -1015,6 +1015,17 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   background-size: cover;
   background-position: center;
 }
+/* Client logos (as opposed to project photos) shouldn't be cropped to
+   fill the 16:10 frame like a photo — contain + a plain background
+   shows the whole mark instead. */
+.case-image-logo,
+.carousel-track .case-image-logo {
+  background-color: #ffffff;
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding: 2rem;
+  background-origin: content-box;
+}
 .case-image-label {
   position: absolute;
   left: 0;
