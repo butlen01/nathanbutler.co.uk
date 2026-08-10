@@ -1260,3 +1260,75 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
 @media (max-width: 820px) {
   .contact-grid { grid-template-columns: 1fr; }
 }
+
+/* ---------- Contact form ---------- */
+.contact-form { margin-top: 2.5rem; }
+.contact-form-label {
+  display: block;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 0.4rem;
+}
+.contact-form-field + .contact-form-field { margin-top: 1.2rem; }
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.96rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.75em 0.9em;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+.contact-form textarea { min-height: 8rem; resize: vertical; }
+.contact-form .btn { margin-top: 1.5rem; border: none; cursor: pointer; }
+.contact-form-honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* ---------- Print ---------- */
+@media print {
+  * { color: #000 !important; background: #fff !important; box-shadow: none !important; text-shadow: none !important; }
+
+  .site-header, .nav-toggle, .site-footer, .cta, .carousel-arrow { display: none !important; }
+
+  a { color: #000 !important; text-decoration: underline; }
+  a[href^="http"]:after, a[href^="https"]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.78em;
+    font-weight: 400;
+  }
+  a[href^="mailto"]:after, a[href^="tel"]:after, a[href^="#"]:after { content: ""; }
+
+  .hero-split-media { display: none !important; }
+  .hero-split { grid-template-columns: 1fr !important; min-height: 0 !important; }
+
+  /* Expand carousels so every card prints, rather than the sliding
+     3-visible window used on screen. */
+  .carousel-viewport { overflow: visible !important; clip-path: none !important; contain: none !important; }
+  .carousel-track {
+    flex-wrap: wrap !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .carousel-track .case-row {
+    flex: 0 0 calc((100% - 2rem) / 2) !important;
+    transform: none !important;
+  }
+  .carousel-track .case-row:hover { transform: none !important; }
+
+  .stat-card, .approach-card, .case-row, .timeline-item, .landmark-item {
+    border: 1px solid #999 !important;
+    break-inside: avoid;
+  }
+
+  body { font-size: 11pt; }
+}
