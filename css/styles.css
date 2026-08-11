@@ -1300,6 +1300,15 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
 
   .site-header, .nav-toggle, .site-footer, .cta, .carousel-arrow { display: none !important; }
 
+  /* Scroll-triggered reveal-on-scroll leaves below-the-fold content at
+     opacity:0 in a single-pass print/PDF capture. Force it visible. */
+  html.js-reveal .reveal,
+  html.js-reveal .reveal-stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
   a { color: #000 !important; text-decoration: underline; }
   a[href^="http"]:after, a[href^="https"]:after {
     content: " (" attr(href) ")";
