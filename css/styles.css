@@ -1136,6 +1136,13 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
 }
 .landmark-detail { font-size: 0.85rem; color: var(--ink-soft); }
 
+/* An 11-item strip leaves a lone tile on the last row at most widths; give it its own centred row instead of sitting flush-left with empty space beside it */
+.landmark-strip .landmark-item:nth-child(11):last-child {
+  grid-column: 1 / -1;
+  max-width: 280px;
+  margin-inline: auto;
+}
+
 /* ---------- Model band (pull-quote statement) ---------- */
 .model-band { background: var(--accent-dim); color: #ffffff; }
 .model-band .eyebrow { color: var(--accent-2); }
