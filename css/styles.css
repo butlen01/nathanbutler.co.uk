@@ -564,6 +564,11 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   transition: gap 0.3s var(--ease);
 }
 .text-link:hover { gap: 0.7em; }
+/* A text-link sitting directly under a carousel (e.g. "View all Track
+   Record & Leadership") has no grid/card margin-bottom above it to
+   create breathing room, unlike a link after an approach-grid or
+   landmark-strip. */
+.carousel + .text-link { margin-top: clamp(1.5rem, 3vw, 2.5rem); }
 
 /* ---------- Work groups ---------- */
 .work-group + .work-group { margin-top: clamp(2.5rem, 5vw, 3.5rem); }
