@@ -1100,6 +1100,54 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   }
 }
 
+/* ---------- No-image card grid (Track Record groups of 3 or fewer) ----------
+   Same bordered-card treatment as .case-list-img-grid, minus the image,
+   for groups too small to warrant a carousel: cards simply sit left to
+   right in the grid's slots (a 1- or 2-card group leaves the remaining
+   slots empty rather than stretching to fill the row). */
+.case-list-noimg-grid {
+  border-top: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.case-list-noimg-grid .case-row {
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1.6rem 1.5rem 1.8rem;
+}
+@media (max-width: 1080px) {
+  .case-list-noimg-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .case-list-noimg-grid { grid-template-columns: 1fr; }
+}
+
+/* Shared alignment rules for Track Record's no-image proof-point cards,
+   whether they sit in a static .case-list-noimg-grid row or the
+   "Protecting the Margin" carousel. Scoped to .case-proof rather than
+   .case-row-noimg generally, because the homepage carousel's own
+   case-row-noimg tiles use a different, already-compact two-paragraph
+   unlabeled format that doesn't need these floors. */
+.case-proof .case-meta { min-height: 3.6rem; }
+.case-proof .case-figure { flex-basis: 100%; }
+.case-proof .case-body h3 { font-size: 1.08rem; max-width: none; margin-bottom: 1rem; min-height: 3.7rem; }
+.case-proof .case-block p { font-size: 0.9rem; }
+.case-proof .case-block:nth-child(2) p { height: 13rem; overflow: hidden; }
+.case-proof .case-block:nth-child(3) p { height: 13rem; overflow: hidden; }
+.case-proof .case-block:nth-child(4) p { height: 11.6rem; overflow: hidden; }
+
+@media (max-width: 640px) {
+  .case-proof .case-meta,
+  .case-proof .case-body h3 { min-height: 0; }
+  .case-proof .case-block:nth-child(2) p,
+  .case-proof .case-block:nth-child(3) p,
+  .case-proof .case-block:nth-child(4) p { height: auto; overflow: visible; }
+}
+
 /* ---------- Note panel ---------- */
 .note-panel {
   margin-top: clamp(1.5rem, 3vw, 2.5rem);
