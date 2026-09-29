@@ -712,21 +712,28 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   flex-wrap: wrap;
   align-items: flex-start;
   gap: 0.7rem 1rem;
+  min-height: 3.6rem;
 }
 .carousel-track .case-figure {
   border-top: none;
   padding-top: 0;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.3rem 0.5rem;
+  flex-basis: 100%;
 }
 .carousel-track .case-figure-value { font-size: 1.2rem; }
-.carousel-track .case-body h3 { font-size: 1.08rem; max-width: none; margin-bottom: 1rem; }
+.carousel-track .case-body h3 { font-size: 1.08rem; max-width: none; margin-bottom: 1rem; min-height: 3.7rem; }
 .carousel-track .case-block p,
 .carousel-track .case-block ul { font-size: 0.9rem; }
-.carousel-track .case-row:not(.case-row-noimg) .case-block:nth-child(2) p { min-height: 9rem; }
-.carousel-track .case-row:not(.case-row-noimg) .case-block:nth-child(3) p { min-height: 10.5rem; }
+/* Fixed (not min-) height on every case-block paragraph so each heading
+   and the one after it start at the same point across every card in the
+   row: a floor alone still lets the longest card's overflow drag its own
+   later headings down out of line with the rest. Sized to the longest
+   actual paragraph at each position, with overflow:hidden as a safety
+   net if a future edit runs long — it clips rather than misaligning the
+   whole row. */
+.carousel-track .case-row:not(.case-row-noimg) .case-block:nth-child(2) p { height: 13rem; overflow: hidden; }
+.carousel-track .case-row:not(.case-row-noimg) .case-block:nth-child(3) p { height: 13rem; overflow: hidden; }
+.carousel-track .case-row:not(.case-row-noimg) .case-block:nth-child(4) p { height: 10.2rem; overflow: hidden; }
+.carousel-track .case-row:not(.case-row-noimg) .case-block:nth-child(5) p { height: 10.2rem; overflow: hidden; }
 
 .case-row-soon { border-style: dashed; opacity: 0.6; pointer-events: none; }
 
@@ -735,8 +742,12 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
 }
 @media (max-width: 600px) {
   .carousel-track .case-row { flex-basis: 100%; }
+  .carousel-track .case-meta,
+  .carousel-track .case-body h3 { min-height: 0; }
   .carousel-track .case-block:nth-child(2) p,
-  .carousel-track .case-block:nth-child(3) p { min-height: 0; }
+  .carousel-track .case-block:nth-child(3) p,
+  .carousel-track .case-block:nth-child(4) p,
+  .carousel-track .case-block:nth-child(5) p { height: auto; overflow: visible; }
 }
 
 /* ---------- CTA band ---------- */
