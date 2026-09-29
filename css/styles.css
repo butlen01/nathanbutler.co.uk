@@ -119,6 +119,12 @@ a { color: inherit; text-decoration: none; }
 }
 
 section { padding: var(--section-pad) 0; }
+/* Padding doesn't collapse the way margin does, so two adjacent
+   sections were each contributing a full --section-pad and stacking
+   into a doubled gap (up to ~16rem of dead space). Dropping the second
+   section's own top padding leaves just the first section's bottom
+   padding as the gap, restoring it to one --section-pad rather than two. */
+section + section { padding-top: 0; }
 
 .eyebrow {
   display: inline-flex;
