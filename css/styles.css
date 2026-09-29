@@ -1137,7 +1137,7 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
    .case-row-noimg generally, because the homepage carousel's own
    case-row-noimg tiles use a different, already-compact two-paragraph
    unlabeled format that doesn't need these floors. */
-.case-proof .case-meta { min-height: 3.6rem; }
+.case-proof .case-meta { flex-direction: row; flex-wrap: wrap; align-items: flex-start; gap: 0.7rem 1rem; min-height: 3.6rem; }
 .case-proof .case-figure { flex-basis: 100%; }
 .case-proof .case-body h3 { font-size: 1.08rem; max-width: none; margin-bottom: 1rem; min-height: 3.7rem; }
 .case-proof .case-block p { font-size: 0.9rem; }
