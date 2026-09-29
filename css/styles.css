@@ -285,7 +285,10 @@ section { padding: var(--section-pad) 0; }
   .nav-toggle { display: block; }
   .main-nav {
     position: fixed;
-    inset: 80px 0 0 0;
+    top: 80px;
+    left: 0;
+    right: 0;
+    height: calc(100vh - 80px);
     background: var(--paper);
     transform: translateY(-8px);
     opacity: 0;
