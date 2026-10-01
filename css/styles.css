@@ -727,7 +727,7 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   order: 2;
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 1;
+  aspect-ratio: 2 / 1;
   background-color: var(--cream-soft);
   background-size: cover;
   background-position: center;
