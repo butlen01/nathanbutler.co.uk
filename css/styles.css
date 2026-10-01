@@ -125,6 +125,19 @@ section { padding: var(--section-pad) 0; }
    section's own top padding leaves just the first section's bottom
    padding as the gap, restoring it to one --section-pad rather than two. */
 section + section { padding-top: 0; }
+/* That rule over-corrects for sections whose preceding neighbour doesn't
+   carry enough of its own bottom padding to compensate (a bordered strip
+   like .client-banner, or a section that itself got a smaller custom
+   padding, like .page-hero or .story-stat): the next heading ends up
+   flush against the edge above it, right down to 0px on several pages.
+   These class-level rules outrank the type-selector one above, so each
+   restores a modest gap regardless of what precedes it. */
+.case-section,
+.approach,
+.stats,
+.work {
+  padding-top: clamp(2rem, 4.5vw, 3rem);
+}
 
 .eyebrow {
   display: inline-flex;
