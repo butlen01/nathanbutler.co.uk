@@ -314,7 +314,11 @@ section + section { padding-top: 0; }
 .site-footer {
   background: var(--accent-dim);
   color: #ffffff;
-  padding: clamp(3rem, 6vw, 4.5rem) 0 2rem;
+  /* .cta (same background colour) always sits directly above this, and its
+     own bottom padding already provides the gap above the buttons, so this
+     doesn't need a full top padding of its own on top of that: it would
+     just stack into dead blue space between the two. */
+  padding: clamp(1.5rem, 3vw, 2rem) 0 2rem;
 }
 
 .site-footer .container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2.5rem; }
@@ -701,6 +705,12 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   z-index: 5;
   box-shadow: 0 26px 50px -14px rgba(30, 58, 110, 0.4);
 }
+/* Track Record & Client Case Studies carry this same carousel markup but
+   don't want the hover pop-out, per instruction. */
+.carousel.no-pop .carousel-track .case-row:hover {
+  transform: none;
+  box-shadow: none;
+}
 .carousel-track .case-image {
   order: 2;
   position: relative;
@@ -762,7 +772,20 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
 }
 
 /* ---------- CTA band ---------- */
-.cta { background: var(--accent-dim); color: #ffffff; text-align: center; }
+.cta {
+  background: var(--accent-dim);
+  color: #ffffff;
+  text-align: center;
+  /* .cta always follows a section with a different (white) background, so the
+     `section + section { padding-top: 0 }` rule (which assumes adjacent
+     sections share a background) would leave zero space between the blue
+     background's top edge and the heading. Overriding padding here (a class
+     selector beats the type-selector adjacency rule) restores that gap while
+     keeping the block more compact than the default --section-pad; top is
+     slightly larger than bottom to read as intentional breathing room
+     rather than leftover dead space. */
+  padding: clamp(3rem, 6vw, 4rem) 0 clamp(2rem, 4.5vw, 3rem);
+}
 .cta .hero-lead, .cta p { color: rgba(255,255,255,0.72); }
 .cta-inner h2 { font-size: clamp(1.5rem, 2.8vw, 2.1rem); max-width: 20ch; margin: 0 auto 1.8rem; }
 .cta .hero-actions { justify-content: center; }
@@ -1217,7 +1240,11 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
 }
 
 /* ---------- Model band (pull-quote statement) ---------- */
-.model-band { background: var(--accent-dim); color: #ffffff; }
+/* Same fix as .cta: this follows a section with a different background, so
+   the `section + section { padding-top: 0 }` rule leaves no gap between the
+   blue background's top edge and the eyebrow. Top is slightly larger than
+   bottom, matching .cta. */
+.model-band { background: var(--accent-dim); color: #ffffff; padding: clamp(3rem, 6vw, 4rem) 0 clamp(2rem, 4.5vw, 3rem); }
 .model-band .eyebrow { color: var(--accent-2); }
 .model-band .eyebrow::before { background: var(--accent-2); }
 .model-quote {
