@@ -705,8 +705,8 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   z-index: 5;
   box-shadow: 0 26px 50px -14px rgba(30, 58, 110, 0.4);
 }
-/* Track Record & Client Case Studies carry this same carousel markup but
-   don't want the hover pop-out, per instruction. */
+/* Client Case Studies carries this same carousel markup but doesn't want
+   the hover pop-out, per instruction. */
 .carousel.no-pop .carousel-track .case-row:hover {
   transform: none;
   box-shadow: none;
@@ -744,15 +744,12 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
 .carousel-track .case-body h3 { font-size: 1.08rem; max-width: none; margin-bottom: 1rem; min-height: 3.7rem; }
 .carousel-track .case-block p,
 .carousel-track .case-block ul { font-size: 0.9rem; }
-/* Track Record & Client Case Studies' compact carousel cards (case-row-noimg
-   with an internal .case-links, unlike the homepage's whole-card-as-link
-   version) carry copy of varying length. .carousel-track's own
-   align-items:stretch already equalises every card in view to the tallest
-   one's height; making .case-body a flex column that fills that height and
-   pinning .case-links to its bottom keeps the "read more" link at the same
-   position across a row regardless of how long each card's teaser runs. */
-.carousel-track .case-row-noimg .case-body { display: flex; flex-direction: column; flex: 1; }
-.carousel-track .case-row-noimg .case-links { margin-top: auto; padding-top: 1rem; }
+/* case-row-noimg cards are whole-card links with no footer element, so
+   they don't need as much bottom padding reserved as the image cards do;
+   trimming it tightens the empty space under shorter cards once
+   .carousel-track's align-items:stretch has equalised the row to the
+   tallest card's height. */
+.carousel-track .case-row-noimg .case-content { padding-bottom: 1.3rem; }
 /* Fixed (not min-) height on every case-block paragraph so each heading
    and the one after it start at the same point across every card in the
    row: a floor alone still lets the longest card's overflow drag its own
@@ -1141,36 +1138,6 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   .case-list-img-grid .case-block:nth-child(3) p {
     min-height: 0;
   }
-}
-
-/* ---------- No-image card grid (Track Record's three proof-point groups) ----------
-   Same bordered-card treatment as .case-list-img-grid, minus the image.
-   Cards use the compact, unlabelled two-paragraph format (no fixed
-   per-block heights needed, since the copy itself is kept short) so a
-   13-card page reads as a scannable grid rather than a long scroll. */
-.case-list-noimg-grid {
-  border-top: none;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}
-.case-list-noimg-grid .case-row {
-  display: flex;
-  flex-direction: column;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 1.6rem 1.5rem 1.8rem;
-}
-.case-list-noimg-grid .case-meta { flex-direction: row; flex-wrap: wrap; align-items: flex-start; gap: 0.7rem 1rem; }
-.case-list-noimg-grid .case-figure { flex-basis: 100%; }
-.case-list-noimg-grid .case-body h3 { font-size: 1.08rem; max-width: none; margin-bottom: 1rem; }
-.case-list-noimg-grid .case-block p { font-size: 0.9rem; }
-@media (max-width: 1080px) {
-  .case-list-noimg-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 640px) {
-  .case-list-noimg-grid { grid-template-columns: 1fr; }
 }
 
 /* ---------- Note panel ---------- */
