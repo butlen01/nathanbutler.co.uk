@@ -705,12 +705,6 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   z-index: 5;
   box-shadow: 0 26px 50px -14px rgba(30, 58, 110, 0.4);
 }
-/* Client Case Studies carries this same carousel markup but doesn't want
-   the hover pop-out, per instruction. */
-.carousel.no-pop .carousel-track .case-row:hover {
-  transform: none;
-  box-shadow: none;
-}
 .carousel-track .case-image {
   order: 2;
   position: relative;
