@@ -418,13 +418,18 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
   min-height: clamp(480px, 60vh, 660px);
+  /* The hero's own bottom section padding stacks on top of
+     .hero-split-text's own bottom padding below, leaving a much bigger
+     gap under the hero than above it before the client banner starts. */
+  padding-bottom: clamp(1.5rem, 3.5vw, 2.5rem);
 }
 
 .hero-split-text {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-block: clamp(2.5rem, 6vw, 4rem);
+  padding-top: clamp(2.5rem, 6vw, 4rem);
+  padding-bottom: clamp(0.8rem, 2vw, 1.3rem);
 }
 
 .hero-split-media {
