@@ -727,7 +727,7 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   order: 2;
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 3 / 1;
   background-color: var(--cream-soft);
   background-size: cover;
   background-position: center;
@@ -762,18 +762,6 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
    .carousel-track's align-items:stretch has equalised the row to the
    tallest card's height. */
 .carousel-track .case-row-noimg .case-content { padding-bottom: 1.3rem; }
-/* Fixed (not min-) height on every case-block paragraph so each heading
-   and the one after it start at the same point across every card in the
-   row: a floor alone still lets the longest card's overflow drag its own
-   later headings down out of line with the rest. Sized to the longest
-   actual paragraph at each position, with overflow:hidden as a safety
-   net if a future edit runs long — it clips rather than misaligning the
-   whole row. */
-.carousel-track .case-row:not(.case-row-noimg) .case-block:nth-child(2) p { height: 13rem; overflow: hidden; }
-.carousel-track .case-row:not(.case-row-noimg) .case-block:nth-child(3) p { height: 13rem; overflow: hidden; }
-.carousel-track .case-row:not(.case-row-noimg) .case-block:nth-child(4) p { height: 10.2rem; overflow: hidden; }
-.carousel-track .case-row:not(.case-row-noimg) .case-block:nth-child(5) p { height: 10.2rem; overflow: hidden; }
-
 .case-row-soon { border-style: dashed; opacity: 0.6; pointer-events: none; }
 
 @media (max-width: 900px) {
@@ -783,10 +771,6 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   .carousel-track .case-row { flex-basis: 100%; }
   .carousel-track .case-meta,
   .carousel-track .case-body h3 { min-height: 0; }
-  .carousel-track .case-block:nth-child(2) p,
-  .carousel-track .case-block:nth-child(3) p,
-  .carousel-track .case-block:nth-child(4) p,
-  .carousel-track .case-block:nth-child(5) p { height: auto; overflow: visible; }
 }
 
 /* ---------- CTA band ---------- */
@@ -882,15 +866,6 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
 .case-body h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); margin-bottom: 1.3rem; max-width: 32ch; }
 
 .case-block + .case-block { margin-top: 1.1rem; }
-.case-label {
-  display: block;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent-2);
-  margin-bottom: 0.3rem;
-}
 .case-block p { color: var(--ink-soft); font-size: 0.97rem; max-width: 62ch; }
 .case-block ul { margin: 0; padding-left: 1.15rem; color: var(--ink-soft); font-size: 0.97rem; max-width: 62ch; }
 .case-block ul li { padding-left: 0.2rem; }
@@ -1092,6 +1067,7 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   padding: 2rem;
   background-origin: content-box;
 }
+.carousel-track .case-image-logo { padding: 1rem; }
 .case-image-label {
   position: absolute;
   left: 0;
