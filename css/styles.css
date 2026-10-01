@@ -1199,6 +1199,10 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
 .model-band { background: var(--accent-dim); color: #ffffff; padding: clamp(3rem, 6vw, 4rem) 0 clamp(2rem, 4.5vw, 3rem); }
 .model-band .eyebrow { color: var(--accent-2); }
 .model-band .eyebrow::before { background: var(--accent-2); }
+/* The section after the band hits the same bug from the other side: its own
+   top padding gets zeroed by `section + section`, leaving no gap between the
+   blue background's bottom edge and the next heading. */
+.model-band + .case-section { padding-top: clamp(3rem, 6vw, 4rem); }
 .model-quote {
   font-family: var(--font-display);
   font-style: italic;
