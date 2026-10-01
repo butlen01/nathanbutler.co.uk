@@ -744,6 +744,15 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
 .carousel-track .case-body h3 { font-size: 1.08rem; max-width: none; margin-bottom: 1rem; min-height: 3.7rem; }
 .carousel-track .case-block p,
 .carousel-track .case-block ul { font-size: 0.9rem; }
+/* Track Record & Client Case Studies' compact carousel cards (case-row-noimg
+   with an internal .case-links, unlike the homepage's whole-card-as-link
+   version) carry copy of varying length. .carousel-track's own
+   align-items:stretch already equalises every card in view to the tallest
+   one's height; making .case-body a flex column that fills that height and
+   pinning .case-links to its bottom keeps the "read more" link at the same
+   position across a row regardless of how long each card's teaser runs. */
+.carousel-track .case-row-noimg .case-body { display: flex; flex-direction: column; flex: 1; }
+.carousel-track .case-row-noimg .case-links { margin-top: auto; padding-top: 1rem; }
 /* Fixed (not min-) height on every case-block paragraph so each heading
    and the one after it start at the same point across every card in the
    row: a floor alone still lets the longest card's overflow drag its own
