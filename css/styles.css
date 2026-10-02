@@ -1299,8 +1299,9 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
 .quote-slide-attribution strong { color: var(--ink); font-weight: 600; }
 
 /* ---------- Full endorsements (endorsements.html) ---------- */
-.endorsement-full { max-width: 68ch; margin: 0 auto; }
-.endorsement-full + .endorsement-full {
+.endorsement-full {
+  max-width: 68ch;
+  margin: 0 auto;
   margin-top: clamp(3rem, 6vw, 4.5rem);
   padding-top: clamp(3rem, 6vw, 4.5rem);
   border-top: 1px solid var(--line);
