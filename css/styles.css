@@ -1252,6 +1252,59 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   letter-spacing: -0.005em;
 }
 
+/* ---------- Endorsements: text-only quote carousel (no cards) ---------- */
+.quote-track { align-items: stretch; }
+.quote-slide {
+  flex: 0 0 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0.5rem clamp(1.5rem, 8vw, 6rem);
+}
+.quote-slide-text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+  line-height: 1.5;
+  max-width: 56ch;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+.quote-slide-attribution {
+  display: block;
+  margin-top: 1.3rem;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+.quote-slide-attribution strong { color: var(--ink); font-weight: 600; }
+
+/* ---------- Full endorsements (endorsements.html) ---------- */
+.endorsement-full { max-width: 68ch; margin: 0 auto; }
+.endorsement-full + .endorsement-full {
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+  padding-top: clamp(3rem, 6vw, 4.5rem);
+  border-top: 1px solid var(--line);
+}
+.endorsement-role {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--accent);
+  margin-bottom: 0.2rem;
+}
+.endorsement-duration { display: block; color: var(--ink-soft); font-size: 0.88rem; margin-bottom: 1.5rem; }
+.endorsement-text p { color: var(--ink-soft); font-size: 1.02rem; margin-bottom: 1.1rem; }
+.endorsement-text p:first-of-type {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.12rem;
+  color: var(--ink);
+}
+
 /* ---------- Principles (case-row reuse, plain text body) ---------- */
 .case-body > p {
   color: var(--ink-soft);
