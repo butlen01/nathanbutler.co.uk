@@ -1033,23 +1033,6 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   .milestone-label { padding-right: 0; }
 }
 
-/* ---------- Ladder: ascending rungs, light to dark junior to senior ---------- */
-.ladder-block { margin: 1.6rem 0 2.2rem; max-width: 68ch; }
-.ladder {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  align-items: end;
-  gap: 0.5rem;
-  height: 9rem;
-}
-.ladder-step { display: flex; flex-direction: column; align-items: center; height: 100%; justify-content: flex-end; }
-.ladder-bar { width: 100%; border-radius: 4px 4px 0 0; }
-.ladder-label { font-size: 0.72rem; color: var(--ink-soft); text-align: center; line-height: 1.3; margin-top: 0.5rem; }
-@media (max-width: 640px) {
-  .ladder { height: 7rem; gap: 0.35rem; }
-  .ladder-label { font-size: 0.62rem; }
-}
-
 @media (max-width: 720px) {
   .case-row { grid-template-columns: 1fr; gap: 1.25rem; }
   .case-meta { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 0.8rem 1.2rem; }
