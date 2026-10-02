@@ -253,7 +253,7 @@ section + section { padding-top: 0; }
 .main-nav ul {
   display: flex;
   align-items: center;
-  gap: clamp(1.25rem, 2.5vw, 2.5rem);
+  gap: clamp(0.85rem, 2vw, 2.5rem);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -261,9 +261,10 @@ section + section { padding-top: 0; }
 
 .main-nav a {
   position: relative;
-  font-size: 0.9rem;
+  font-size: clamp(0.78rem, 1.1vw, 0.9rem);
   font-weight: 500;
   padding: 0.3em 0;
+  white-space: nowrap;
 }
 
 .main-nav a::after {
