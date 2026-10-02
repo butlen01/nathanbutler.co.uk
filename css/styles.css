@@ -989,6 +989,67 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   .story-chart-multiplier { font-size: 2rem; }
 }
 
+/* ---------- Composition bar: single-row proportional breakdown, used
+   inline within a story's prose rather than as its own top-level section. ---------- */
+.comp-bar-block { margin: 1.6rem 0 2.2rem; max-width: 68ch; }
+.comp-bar {
+  display: flex;
+  height: 2.75rem;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 1.3rem;
+}
+.comp-bar-segment + .comp-bar-segment { border-left: 2px solid var(--paper); }
+.comp-bar-legend {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.9rem 1.5rem;
+}
+.comp-bar-legend-item { display: flex; align-items: flex-start; gap: 0.6rem; }
+.comp-bar-swatch { flex: none; width: 0.85rem; height: 0.85rem; border-radius: 3px; margin-top: 0.2rem; }
+.comp-bar-legend-text { color: var(--ink-soft); font-size: 0.92rem; }
+.comp-bar-legend-text strong { color: var(--ink); font-family: var(--font-display); font-weight: 600; }
+@media (max-width: 560px) {
+  .comp-bar-legend { grid-template-columns: 1fr; }
+}
+
+/* ---------- Milestone bar: cumulative stages released left to right ---------- */
+.milestone-bar-block { margin: 1.6rem 0 2.2rem; max-width: 68ch; }
+.milestone-bar {
+  display: flex;
+  height: 2.25rem;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 0.9rem;
+}
+.milestone-segment + .milestone-segment { border-left: 2px solid var(--paper); }
+.milestone-labels { display: flex; }
+.milestone-label { display: flex; flex-direction: column; padding-right: 1rem; }
+.milestone-label:last-child { padding-right: 0; }
+.milestone-pct { font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; color: var(--ink); }
+.milestone-name { color: var(--ink-soft); font-size: 0.85rem; margin-top: 0.15rem; }
+@media (max-width: 560px) {
+  .milestone-labels { flex-direction: column; gap: 0.7rem; }
+  .milestone-label { padding-right: 0; }
+}
+
+/* ---------- Ladder: ascending rungs, light to dark junior to senior ---------- */
+.ladder-block { margin: 1.6rem 0 2.2rem; max-width: 68ch; }
+.ladder {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: end;
+  gap: 0.5rem;
+  height: 9rem;
+}
+.ladder-step { display: flex; flex-direction: column; align-items: center; height: 100%; justify-content: flex-end; }
+.ladder-bar { width: 100%; border-radius: 4px 4px 0 0; }
+.ladder-label { font-size: 0.72rem; color: var(--ink-soft); text-align: center; line-height: 1.3; margin-top: 0.5rem; }
+@media (max-width: 640px) {
+  .ladder { height: 7rem; gap: 0.35rem; }
+  .ladder-label { font-size: 0.62rem; }
+}
+
 @media (max-width: 720px) {
   .case-row { grid-template-columns: 1fr; gap: 1.25rem; }
   .case-meta { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 0.8rem 1.2rem; }
