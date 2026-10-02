@@ -139,6 +139,21 @@ section + section { padding-top: 0; }
   padding-top: clamp(2rem, 4.5vw, 3rem);
 }
 
+/* The restore-top rule above assumes the section before it is a "thin"
+   one (page-hero, story-stat) that doesn't carry much bottom padding of
+   its own. On the homepage, .stats/.approach/.work run three in a row
+   (Stats, Endorsements, How I Work, Selected Work), so each predecessor
+   is ALSO a full-default section still holding its own uncut bottom
+   --section-pad: that stacks with the next section's restored top and
+   roughly doubles the gap at each of those three transitions. Trim the
+   predecessor's bottom padding in that specific chain so each stays to
+   one modest gap rather than two. */
+.stats:has(+ .approach),
+.stats + .approach:has(+ .approach),
+.stats + .approach + .approach:has(+ .work) {
+  padding-bottom: clamp(2rem, 4.5vw, 3rem);
+}
+
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -596,8 +611,10 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
 /* A text-link sitting directly under a carousel (e.g. "View all Track
    Record & Leadership") has no grid/card margin-bottom above it to
    create breathing room, unlike a link after an approach-grid or
-   landmark-strip. */
-.carousel + .text-link { margin-top: clamp(1.5rem, 3vw, 2.5rem); }
+   landmark-strip. Same gap needed when two such links sit side by side
+   in a .section-head-row instead of a single link. */
+.carousel + .text-link,
+.carousel + .section-head-row { margin-top: clamp(1.5rem, 3vw, 2.5rem); }
 
 /* ---------- Work groups ---------- */
 .work-group + .work-group { margin-top: clamp(2.5rem, 5vw, 3.5rem); }
