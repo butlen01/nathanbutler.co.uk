@@ -154,6 +154,15 @@ section + section { padding-top: 0; }
   padding-bottom: clamp(2rem, 4.5vw, 3rem);
 }
 
+/* Same compounding gap, same fix, for about.html's equivalent run of
+   four (What I Am Looking For, The Journey, Beyond the Business, Beyond
+   the Work). .page-hero + .approach.bg-cream only matches that page. */
+.page-hero + .approach.bg-cream:has(+ .case-section),
+.page-hero + .approach.bg-cream + .case-section:has(+ .approach.bg-cream),
+.page-hero + .approach.bg-cream + .case-section + .approach.bg-cream:has(+ .approach) {
+  padding-bottom: clamp(2rem, 4.5vw, 3rem);
+}
+
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -263,6 +272,13 @@ section + section { padding-top: 0; }
   text-transform: uppercase;
   color: var(--ink-soft);
   margin-top: 1px;
+}
+
+/* Below ~430px the role line wraps to two lines, stacking three lines
+   of text beside a fixed 36px brand mark and leaving it looking short
+   against the text next to it. Shrink just enough to hold one line. */
+@media (max-width: 430px) {
+  .brand-role { font-size: 0.56rem; letter-spacing: 0.05em; white-space: nowrap; }
 }
 
 .main-nav ul {
