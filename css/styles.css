@@ -1306,13 +1306,26 @@ html.js-reveal .reveal-stagger.is-visible > * { transition-delay: calc(var(--i, 
   padding-top: clamp(3rem, 6vw, 4.5rem);
   border-top: 1px solid var(--line);
 }
+/* The page-hero and .case-section above already carry their own gap
+   before the first endorsement, so giving it the same full margin/padding
+   as the gap *between* two endorsements double-counts the spacing and
+   leaves an oversized blank area above the divider line. */
+.endorsement-full:first-child {
+  margin-top: 0;
+  padding-top: clamp(1.5rem, 3vw, 2rem);
+}
 .endorsement-role {
-  display: block;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.15rem;
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 0.35em 0.85em;
+  border: 1px solid var(--line);
+  border-radius: 3px;
   color: var(--accent);
-  margin-bottom: 0.2rem;
+  background: var(--cream-soft);
+  margin-bottom: 0.6rem;
 }
 .endorsement-duration { display: block; color: var(--ink-soft); font-size: 0.88rem; margin-bottom: 1.5rem; }
 .endorsement-text p { color: var(--ink-soft); font-size: 1.02rem; margin-bottom: 1.1rem; }
