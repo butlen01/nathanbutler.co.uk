@@ -155,13 +155,13 @@ section + section { padding-top: 0; }
 }
 
 /* Same compounding gap, same fix, for about.html's equivalent run of
-   five (What I Am Looking For, The Journey, Beyond the Business, Beyond
-   the Work, External Standard). .page-hero + .approach.bg-cream only
+   five (What I Am Looking For, The Journey, External Standard, Beyond
+   the Business, Beyond the Work). .page-hero + .approach.bg-cream only
    matches that page. */
 .page-hero + .approach.bg-cream:has(+ .case-section),
 .page-hero + .approach.bg-cream + .case-section:has(+ .approach.bg-cream),
 .page-hero + .approach.bg-cream + .case-section + .approach.bg-cream:has(+ .approach),
-.page-hero + .approach.bg-cream + .case-section + .approach.bg-cream + .approach:has(+ .approach.bg-cream) {
+.page-hero + .approach.bg-cream + .case-section + .approach.bg-cream + .approach.bg-cream:has(+ .approach) {
   padding-bottom: clamp(2rem, 4.5vw, 3rem);
 }
 
